@@ -1,0 +1,212 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #333;
+}
+
+.heading {
+  text-align: center;
+  margin-top: 4rem;
+  color: #fff;
+}
+
+.players-list-title {
+  text-align: center;
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.players-container {
+  display: grid;
+  grid-template-columns: 0.2fr 0.2fr;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.players-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.players-email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.player-name-input {
+  width: 12rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.player-email-input {
+  width: 12rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+#add-player-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#delete-player-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
+
+.game-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  color: #fff;
+}
+
+#option2 {
+  margin-top: 0.75rem;
+}
+
+#option3 {
+  margin-top: 0.75rem;
+}
+
+#option2-input {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+#option3-inputs input{
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.custom-words-input {
+  width: 12rem;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.start-game-button {
+  display: block;
+  border: 0;
+  outline: 0;
+  padding: 10px 20px;
+  margin-top: 2rem;
+  text-decoration: none;
+  background-color: #4caf50;
+  border-radius: 5px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  transition: padding-right .3s ease-out;
+}
+
+.start-game-button.loading {
+  background-color: #4caf50;
+  padding-right: 40px;
+}
+
+.start-game-button.loading:after {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  right: 6px;
+  top: 50%;
+  width: 0px;
+  height: 0px;
+  margin-top: -2px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-left-color: #FFF;
+  border-top-color: #FFF;
+  animation: spin .6s infinite linear, grow .3s forwards ease-out;
+}
+
+@keyframes spin { 
+  to {
+      transform: rotate(359deg);
+  }
+}
+@keyframes grow { 
+  to {
+      width: 14px;
+      height: 14px;
+      margin-top: -8px;
+      right: 13px;
+  }
+}
+
+#impostor-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  color: #fff;
+  display: none;
+}
+
+#impostor-text {
+  text-align: center;
+  margin-left: 1rem;
+}
+
+#end-game-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  margin: 2rem 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impostor Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1 class="heading">Guess the Impostor!</h1>
+
+  <div class="players-list">
+    <h2 class="players-list-title">Players</h2>
+    <div class="players-container">
+      <div id="players-name" class="players-name">
+        <!-- Dynamically generated -->
+      </div>
+      <div id="players-email" class="players-email">
+        <!-- Dynamically generated -->
+      </div>
+    </div>
+  </div>
+
+  <div class="player-buttons">
+    <button id="add-player-button" class="add-player-button">
+      Add Player
+    </button>
+    <button id="delete-player-button" class="delete-player-button">
+      Delete Last Player
+    </button>
+  </div>
+
+  <div class="game-mode" id="game-mode">
+    <form>
+      <input type="radio" id="option1" name="options" value="option1" checked />
+      <label for="option1">Random Word</label><br />
+
+      <input type="radio" id="option2" name="options" value="option2" />
+      <label for="option2">Custom Word</label>
+      <div id="option2-input" style="display: none">
+        <input class="custom-words-input" id="option2-input-1" type="text" placeholder="Custom word" />
+      </div>
+      <br />
+
+      <input type="radio" id="option3" name="options" value="option3" />
+      <label for="option3">Variation</label>
+      <div id="option3-inputs" style="display: none">
+        <input class="custom-words-input" type="text" id="option3-input-1" placeholder="Word for impostor" /><br />
+        <input class="custom-words-input" type="text" id="option3-input-2" placeholder="Word for everybody else" />
+      </div>
+    </form>
+  </div>
+
+  <div id="impostor-container">
+    Impostor: <span id="impostor-text"></span>
+  </div>
+
+  <div>
+    <button id="start-game-button" class="start-game-button">
+      Start Game
+    </button>
+  </div>
+
+  <div>
+    <button id="end-game-button" class="end-game-button">
+      End Game
+    </button>
+  </div>
+
+  <script type="module" src="script.js"></script>
+  <script type="module" src="words.js"></script>
+</body>
+
+</html>
