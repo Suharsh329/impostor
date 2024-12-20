@@ -110,7 +110,7 @@ const sendEmail = async (players) => {
         game: 'Impostor',
       };
 
-      const result = await fetch("http://localhost:8000/mail/games", {
+      const result = await fetch("https://elegant-peace-production.up.railway.app/mail/games", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
