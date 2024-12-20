@@ -102,30 +102,28 @@ const assignWordToPlayers = (playerEmails, playerNames, words) => {
  * Send an email to each player with their role.
  */
 const sendEmail = async (players) => {
-  const emailList = players.map(player => player.email).join(',');
-
-  // Create object of players with email as key
-  const playersObject = players.reduce((acc, player) => {
-    acc[player.email] = player;
-    return acc;
-  }, {});
-
-  const bodyData = {
-    to: emailList,
-    'recipient-variables': playersObject,
-    game: 'Impostor',
-  };
-
   try {
-    const result = await fetch("https://elegant-peace-production.up.railway.app/mail/games", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bodyData),
-    });
+    for (let i = 0; i < players.length; i++) {
+      const bodyData = {
+        to: players[i].email,
+        'variables': players[i],
+        game: 'Impostor',
+      };
 
-    return result?.status >= 400 ? false : true;
+      const result = await fetch("http://localhost:8000/mail/games", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyData),
+      });
+
+      if (result?.status >= 400) {
+        return false;
+      }
+      await new Promise(resolve => setTimeout(resolve, 1500));
+    }
+    return true;
   } catch (e) {
     console.error(e);
     return false;
@@ -154,7 +152,7 @@ const validateInputs = (playerNames, playerEmails) => {
  */
 const getWords = () => {
   const radios = document.querySelectorAll('input[type=radio]:checked');
-  const value = radios.length > 0 ? radios[0].value: null;
+  const value = radios.length > 0 ? radios[0].value : null;
 
   switch (value) {
     case 'option1':
@@ -168,7 +166,7 @@ const getWords = () => {
     case 'option3':
       const impostorWord = document.getElementById('option3-input-1').value;
       const everyoneElseWord = document.getElementById('option3-input-2').value;
-      if (!impostorWord|| !everyoneElseWord || !impostorWord.trim().length || !everyoneElseWord.trim().length) {
+      if (!impostorWord || !everyoneElseWord || !impostorWord.trim().length || !everyoneElseWord.trim().length) {
         return [];
       }
       const wordForImpostor = document.getElementById('option3-input-1').value;
@@ -286,17 +284,17 @@ document.getElementById("end-game-button").addEventListener("click", () => {
 });
 
 // Radio button event listeners
-document.getElementById('option2').addEventListener('change', function() {
+document.getElementById('option2').addEventListener('change', function () {
   document.getElementById('option2-input').style.display = 'block';
   document.getElementById('option3-inputs').style.display = 'none';
 });
 
-document.getElementById('option3').addEventListener('change', function() {
+document.getElementById('option3').addEventListener('change', function () {
   document.getElementById('option3-inputs').style.display = 'block';
   document.getElementById('option2-input').style.display = 'none';
 });
 
-document.getElementById('option1').addEventListener('change', function() {
+document.getElementById('option1').addEventListener('change', function () {
   document.getElementById('option2-input').style.display = 'none';
   document.getElementById('option3-inputs').style.display = 'none';
 });
