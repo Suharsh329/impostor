@@ -110,7 +110,7 @@ const sendEmail = async (players) => {
         game: 'Impostor',
       };
 
-      const result = await fetch("https://mailer.commando-lizard.xyz/mail/games", {
+      const result = await fetch("https://gomail-84ny.onrender.com/mail/games", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
