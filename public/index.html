@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMPOSTOR — Host</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="title">IMP<span class="accent">O</span>STOR</h1>
+  <div class="tagline">one of you is lying</div>
+
+  <!-- STEP 1: create -->
+  <div id="createView">
+    <div class="block">
+      <h2>Host mode</h2>
+      <div class="mode-opts">
+        <div class="mode sel" data-mode="omniscient" id="modeOmni">
+          <div class="name">Omniscient</div>
+          <div class="desc">You see the word and who the impostor is.</div>
+        </div>
+        <div class="mode" data-mode="blind" id="modeBlind">
+          <div class="name">Blind host</div>
+          <div class="desc">Word and impostor hidden from you too.</div>
+        </div>
+      </div>
+      <div class="center">
+        <button id="createBtn">Create Room</button>
+      </div>
+      <div class="msg" id="createMsg"></div>
+    </div>
+  </div>
+
+  <!-- STEP 2: lobby -->
+  <div id="lobbyView" class="hidden">
+    <div id="qrBox" class="block">
+      <div id="qrcode"></div>
+      <div class="joinurl-row">
+        <span class="joinurl muted" id="joinUrl"></span>
+        <button class="copy-btn" id="copyBtn" type="button" aria-label="Copy join link" title="Copy link">
+          <svg class="ic-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <svg class="ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Players <span class="count-badge" id="playerCount">0</span></h2>
+      <div class="roster"><ul id="rosterList"><li class="muted">Waiting for players…</li></ul></div>
+    </div>
+
+    <div class="block">
+      <h2>Setup</h2>
+      <div class="cfg">
+        <label class="wm-opt"><input type="radio" name="wm" value="random" checked>Random word</label>
+        <label class="wm-opt"><input type="radio" name="wm" value="custom">Custom word</label>
+        <div class="wm-inputs hidden" id="wmCustom">
+          <input id="customWord" type="text" placeholder="The word everyone gets" maxlength="60">
+        </div>
+        <label class="wm-opt"><input type="radio" name="wm" value="variation">Variation (impostor gets a different word)</label>
+        <div class="wm-inputs hidden" id="wmVariation">
+          <input id="impostorWord" type="text" placeholder="Word for the impostor" maxlength="60">
+          <input id="everyoneWord" type="text" placeholder="Word for everyone else" maxlength="60">
+        </div>
+
+        <div class="imp-row">
+          <span class="imp-label">Impostors</span>
+          <input class="imp-input" id="impostorCount" type="number" min="1" inputmode="numeric" value="1">
+        </div>
+        <button type="button" class="suggest" id="impSuggest"></button>
+      </div>
+
+      <div class="tally" id="tally"></div>
+      <div class="center"><button id="startBtn" disabled>Start Game</button></div>
+      <div class="msg" id="startMsg"></div>
+    </div>
+  </div>
+
+  <!-- STEP 3: reveal (impostor only) -->
+  <div id="gameView" class="hidden">
+    <div class="block">
+      <div class="reveal-head">
+        <h2 style="margin:0">The Round</h2>
+        <button class="ghost" id="revealBtn">Show</button>
+      </div>
+      <div class="reveal-card masked" id="revealCard">
+        <div class="reveal-word" id="revealWord"></div>
+        <div class="reveal-impostors" id="revealImpostors"></div>
+      </div>
+      <div class="msg" id="gameMsg">Tap “Show” to reveal the impostor.</div>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

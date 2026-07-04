@@ -1,0 +1,13 @@
+{
+  "name": "impostor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Impostor party word game on Cloudflare Workers — QR-join rooms with per-device word reveal.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.107.0"
+  }
+}
