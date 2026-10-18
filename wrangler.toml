@@ -6,7 +6,7 @@ compatibility_date = "2026-06-01"
 # NOTE: detach this hostname from any old Pages project first — a domain can only
 # be attached to one service at a time, or `wrangler deploy` will fail to provision it.
 routes = [
-  { pattern = "impostor.commando-lizard.xyz", custom_domain = true }
+  { pattern = "impostor.haggabasin.dev", custom_domain = true }
 ]
 
 # Serve the host UI (public/index.html) as static assets.
